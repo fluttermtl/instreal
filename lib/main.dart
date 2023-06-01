@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instreal/l10n/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: InstrealLocalizations.localizationsDelegates,
+      supportedLocales: InstrealLocalizations.supportedLocales,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -107,6 +110,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
+            ),
+            Text(
+              InstrealLocalizations.of(context)!.hello,
             ),
             Text(
               '$_counter',

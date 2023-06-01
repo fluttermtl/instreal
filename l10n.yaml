@@ -1,0 +1,7 @@
+template-arb-file: intl_en.arb
+output-localization-file: instreal_localizations.dart
+output-class: InstrealLocalizations
+preferred-supported-locales:
+  - en
+use-deferred-loading: true
+untranslated-messages-file: untranslated-messages.json
