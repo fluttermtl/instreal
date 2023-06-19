@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "709127213804",
+    "project_id": "instreal-b2e86",
+    "storage_bucket": "instreal-b2e86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709127213804:android:3b3bdc457272e324bccbc9",
+        "android_client_info": {
+          "package_name": "dev.fluttermtl.instreal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709127213804-kfb2svkirjfo50hkand8g9nc7ub67kp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqMHnDaietKPAEIvSiyiJrBJHTVHF1Fl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709127213804-kfb2svkirjfo50hkand8g9nc7ub67kp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

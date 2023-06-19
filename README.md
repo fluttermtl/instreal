@@ -4,13 +4,29 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## How to initialize Firebase
 
-A few resources to get you started if this is your first Flutter project:
+Reference: <https://firebase.google.com/docs/flutter/setup?platform=web>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Create a Firebase project from <https://firebase.google.com/>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Install Firebase CLI
+  <https://firebase.google.com/docs/cli#setup_update_cli>
+
+3. Login to firebase
+
+   ```bash
+   firebase login
+   ```
+
+4. Install FlutterFire
+
+   ```bash
+   dart pub global activate flutterfire_cli
+   ```
+
+5. Configure it using this command in the Project
+
+   ```bash
+   flutterfire configure
+   ```
