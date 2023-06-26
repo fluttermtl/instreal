@@ -10,7 +10,7 @@ class MockFirestore implements PostingsFirestore {
     return mock;
   }
 
-  void cleanMock() {
+  void clean() {
     mock = [];
   }
 
@@ -35,7 +35,7 @@ void main() {
       'imageUrl': 'imageUrl',
     }, 'id');
     mockStore.add(mockModelData);
-    final repo = PostringsRepositoryImpl(firestore: mockStore);
+    final repo = PostingsRepositoryImpl(firestore: mockStore);
     final postings = await repo.postings;
     expect(postings.length, 1);
     expect(postings[0].id, 'id');

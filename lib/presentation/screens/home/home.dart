@@ -4,8 +4,7 @@ import 'package:instreal/features/postings/posting_entity.dart';
 import 'package:instreal/features/postings/postings_firestore.dart';
 import 'package:instreal/features/postings/postings_repository.dart';
 import 'package:instreal/l10n/index.dart';
-
-import 'components/index.dart';
+import 'package:instreal/presentation/components/index.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -16,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final postingsRepo =
-      PostringsRepositoryImpl(firestore: PostingFirestoreImpl());
+      PostingsRepositoryImpl(firestore: PostingFirestoreImpl());
 
   @override
   Widget build(BuildContext context) {

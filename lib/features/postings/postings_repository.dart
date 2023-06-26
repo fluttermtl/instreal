@@ -7,8 +7,8 @@ abstract interface class PostingsRepository {
   Future<String> add(Posting posting);
 }
 
-class PostringsRepositoryImpl implements PostingsRepository {
-  PostringsRepositoryImpl({required this.firestore});
+class PostingsRepositoryImpl implements PostingsRepository {
+  PostingsRepositoryImpl({required this.firestore});
 
   final PostingsFirestore firestore;
 
