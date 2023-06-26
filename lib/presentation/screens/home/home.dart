@@ -71,6 +71,21 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await postingsRepo.add(
+            const Posting(
+              id: "",
+              title: 'title',
+              author: 'author',
+              imageUrl:
+                  'https://i1.wp.com/www.suitcasescholar.com/wp-content/uploads/2012/08/DSC_2583.jpg',
+            ),
+          );
+          setState(() {});
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

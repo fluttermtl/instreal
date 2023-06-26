@@ -31,6 +31,15 @@ class PostingFirestoreModel {
     throw Exception('Invalid document');
   }
 
+  factory PostingFirestoreModel.fromEntity(Posting entity) {
+    return PostingFirestoreModel(
+      id: entity.id,
+      title: entity.title,
+      author: entity.author,
+      imageUrl: entity.imageUrl,
+    );
+  }
+
   Posting get entity => Posting(
         id: id,
         title: title,
