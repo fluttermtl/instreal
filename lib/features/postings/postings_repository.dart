@@ -11,7 +11,6 @@ class PostringsRepositoryImpl implements PostingsRepository {
   final PostingsFirestore firestore;
 
   @override
-  Future<List<Posting>> get postings async {
-    return [for (final posting in await firestore.postings) posting.entity];
-  }
+  Future<List<Posting>> get postings async =>
+      [for (final posting in await firestore.postings) posting.entity];
 }

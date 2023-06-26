@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:instreal/features/postings/posting_entity.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({super.key});
+  const PostCard({super.key, required this.posting});
 
+  final Posting posting;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,13 +17,14 @@ class PostCard extends StatelessWidget {
             AspectRatio(
               aspectRatio: 1 / 2,
               child: Image.network(
-                'https://i1.wp.com/www.suitcasescholar.com/wp-content/uploads/2012/08/DSC_2583.jpg',
-                fit: BoxFit.fitHeight,
+                posting.imageUrl,
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
               ),
             ),
             const SizedBox(height: 16.0),
             Text(
-              'The weather is amazing. I feel very joyful today,',
+              posting.title,
               style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     fontFamily: GoogleFonts.dancingScript().fontFamily,
                   ),
@@ -31,7 +34,7 @@ class PostCard extends StatelessWidget {
               children: [
                 const Spacer(),
                 Text(
-                  '~David L,',
+                  '- ${posting.author}',
                   style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                         fontFamily: GoogleFonts.dancingScript().fontFamily,
                       ),

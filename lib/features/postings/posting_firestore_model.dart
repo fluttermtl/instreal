@@ -15,12 +15,20 @@ class PostingFirestoreModel {
 
   factory PostingFirestoreModel.fromDocument(
       Map<String, dynamic> document, String id) {
-    return PostingFirestoreModel(
-      id: id,
-      title: document['title'] ?? '',
-      author: document['author'] ?? '',
-      imageUrl: document['imageUrl'] ?? '',
-    );
+    if (document
+        case {
+          'title': String? title,
+          'author': String? author,
+          'imageUrl': String? imageUrl,
+        }) {
+      return PostingFirestoreModel(
+        id: id,
+        title: title ?? '',
+        author: author ?? '',
+        imageUrl: imageUrl ?? '',
+      );
+    }
+    throw Exception('Invalid document');
   }
 
   Posting get entity => Posting(

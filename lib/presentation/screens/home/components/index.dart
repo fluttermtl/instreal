@@ -1,1 +1,1 @@
-export 'src/post.dart';
+export 'src/post_card.dart';
