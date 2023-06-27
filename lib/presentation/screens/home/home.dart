@@ -23,14 +23,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
-            expandedHeight: 160,
-            collapsedHeight: 160,
+            expandedHeight: 200,
+            collapsedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               background: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 32.0),
                     Text(
                       InstrealLocalizations.of(context)!.whatsUpIn,
                       style: Theme.of(context).textTheme.displayLarge,
@@ -61,11 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             AsyncSnapshot(connectionState: ConnectionState.done, :final data) =>
               ListView.builder(
-                itemBuilder: (context, index) => PostCard(
-                  posting: data[index],
-                ),
+                itemBuilder: (context, index) => PostCard(posting: data[index]),
                 itemCount: data!.length,
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
               ),
           },
         ),

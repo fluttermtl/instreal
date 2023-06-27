@@ -16,7 +16,12 @@ void main() async {
 
   if (kDebugMode) {
     try {
-      FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+      FirebaseFirestore.instance.useFirestoreEmulator(
+        defaultTargetPlatform == TargetPlatform.android
+            ? "10.0.2.2"
+            : "localhost",
+        8080,
+      );
     } catch (e) {
       // ignore: avoid_print
       print(e);

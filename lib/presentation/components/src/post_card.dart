@@ -15,7 +15,7 @@ class PostCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AspectRatio(
-              aspectRatio: 1 / 2,
+              aspectRatio: 3 / 4,
               child: Image.network(
                 posting.imageUrl,
                 fit: BoxFit.cover,
