@@ -4,7 +4,31 @@ A new Flutter project.
 
 ## Getting Started
 
-## How to initialize Firebase
+### How to start the Firebase emulator
+
+The application requires the Firebase to run. The debug build connects to the local emulator by default while the production build connects to the production Firebase.
+
+1. Install the Firebase CLI <https://firebase.google.com/docs/cli#setup_update_cli>
+2. Start emulator
+
+   ```bash
+   firebase emulators:start
+   ```
+
+**To disable the emulator in the dev environment, disable the line of codes in `lib/main.dart` or build in production mode**
+
+```dart
+  if (kDebugMode) {
+    try {
+      FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+    }
+  }
+```
+
+### How to initialize Firebase
 
 Reference: <https://firebase.google.com/docs/flutter/setup?platform=web>
 
