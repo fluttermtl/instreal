@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:instreal/features/postings/posting_entity.dart';
+import 'package:instreal/features/posts/post_entity.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({super.key, required this.posting});
 
-  final Posting posting;
+  final Post posting;
   @override
   Widget build(BuildContext context) {
     return Card(

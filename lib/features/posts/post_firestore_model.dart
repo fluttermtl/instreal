@@ -1,19 +1,19 @@
-import 'package:instreal/features/postings/posting_entity.dart';
+import 'package:instreal/features/posts/post_entity.dart';
 
-class PostingFirestoreModel {
+class PostFirestoreModel {
   final String id;
   final String title;
   final String author;
   final String imageUrl;
 
-  PostingFirestoreModel({
+  PostFirestoreModel({
     required this.id,
     required this.title,
     required this.author,
     required this.imageUrl,
   });
 
-  factory PostingFirestoreModel.fromDocument(
+  factory PostFirestoreModel.fromDocument(
       Map<String, dynamic> document, String id) {
     if (document
         case {
@@ -21,7 +21,7 @@ class PostingFirestoreModel {
           'author': String? author,
           'imageUrl': String? imageUrl,
         }) {
-      return PostingFirestoreModel(
+      return PostFirestoreModel(
         id: id,
         title: title ?? '',
         author: author ?? '',
@@ -31,15 +31,14 @@ class PostingFirestoreModel {
     throw Exception('Invalid document');
   }
 
-  factory PostingFirestoreModel.fromEntity(Posting entity) =>
-      PostingFirestoreModel(
+  factory PostFirestoreModel.fromEntity(Post entity) => PostFirestoreModel(
         id: entity.id,
         title: entity.title,
         author: entity.author,
         imageUrl: entity.imageUrl,
       );
 
-  Posting get entity => Posting(
+  Post get entity => Post(
         id: id,
         title: title,
         author: author,

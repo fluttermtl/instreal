@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 @immutable
-class Posting {
+class Post {
   final String id;
   final String title;
   final String author;
   final String imageUrl;
 
-  const Posting({
+  const Post({
     required this.id,
     required this.title,
     required this.author,

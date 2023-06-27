@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:instreal/features/postings/posting_entity.dart';
-import 'package:instreal/features/postings/postings_firestore.dart';
-import 'package:instreal/features/postings/postings_repository.dart';
+import 'package:instreal/features/posts/post_entity.dart';
+import 'package:instreal/features/posts/posts_firestore.dart';
+import 'package:instreal/features/posts/posts_repository.dart';
 import 'package:instreal/l10n/index.dart';
 import 'package:instreal/presentation/components/index.dart';
 
@@ -14,8 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final postingsRepo =
-      PostingsRepositoryImpl(firestore: PostingFirestoreImpl());
+  final postingsRepo = PostsRepositoryImpl(firestore: PostFirestoreImpl());
 
   @override
   Widget build(BuildContext context) {
@@ -51,20 +50,17 @@ class _MyHomePageState extends State<MyHomePage> {
             pinned: false,
           ),
         ],
-        body: FutureBuilder<List<Posting>>(
-          future: postingsRepo.postings,
+        body: FutureBuilder<List<Post>>(
+          future: postingsRepo.posts,
           builder: (context, snapshot) => switch (snapshot) {
-            AsyncSnapshot(connectionState: ConnectionState.none) ||
-            AsyncSnapshot(connectionState: ConnectionState.waiting) ||
-            AsyncSnapshot(connectionState: ConnectionState.active) =>
-              const Center(
-                child: CircularProgressIndicator(),
-              ),
             AsyncSnapshot(connectionState: ConnectionState.done, :final data) =>
               ListView.builder(
                 itemBuilder: (context, index) => PostCard(posting: data[index]),
                 itemCount: data!.length,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
+              ),
+            _ => const Center(
+                child: CircularProgressIndicator(),
               ),
           },
         ),
@@ -72,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await postingsRepo.add(
-            const Posting(
+            const Post(
               id: "",
               title: 'title',
               author: 'author',
