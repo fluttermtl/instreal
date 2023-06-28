@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,12 +17,11 @@ void main() async {
 
   if (kDebugMode) {
     try {
-      FirebaseFirestore.instance.useFirestoreEmulator(
-        defaultTargetPlatform == TargetPlatform.android
-            ? "10.0.2.2"
-            : "localhost",
-        8080,
-      );
+      final emulatorHost = defaultTargetPlatform == TargetPlatform.android
+          ? "10.0.2.2"
+          : "localhost";
+      FirebaseStorage.instance.useStorageEmulator(emulatorHost, 9199);
+      FirebaseFirestore.instance.useFirestoreEmulator(emulatorHost, 8080);
     } catch (e) {
       // ignore: avoid_print
       print(e);

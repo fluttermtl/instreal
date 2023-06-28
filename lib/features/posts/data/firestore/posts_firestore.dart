@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:instreal/features/posts/post_firestore_model.dart';
+import 'package:instreal/features/posts/data/firestore/post_firestore_model.dart';
 
 abstract interface class PostsFirestore {
   Future<List<PostFirestoreModel>> get posts;

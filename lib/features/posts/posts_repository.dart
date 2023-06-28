@@ -1,6 +1,7 @@
+import 'package:instreal/features/posts/data/firestorage/posts_firestorage.dart';
+import 'package:instreal/features/posts/data/firestore/post_firestore_model.dart';
+import 'package:instreal/features/posts/data/firestore/posts_firestore.dart';
 import 'package:instreal/features/posts/post_entity.dart';
-import 'package:instreal/features/posts/post_firestore_model.dart';
-import 'package:instreal/features/posts/posts_firestore.dart';
 
 abstract interface class PostsRepository {
   Future<List<Post>> get posts;
@@ -8,9 +9,10 @@ abstract interface class PostsRepository {
 }
 
 class PostsRepositoryImpl implements PostsRepository {
-  PostsRepositoryImpl({required this.firestore});
+  PostsRepositoryImpl({required this.firestore, required this.firestorage});
 
   final PostsFirestore firestore;
+  final PostsFirestorage firestorage;
 
   @override
   Future<List<Post>> get posts async =>
