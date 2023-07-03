@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
-import 'package:instreal/features/posts/post_firestore_model.dart';
-import 'package:instreal/features/posts/posts_firestore.dart';
+import 'package:instreal/features/posts/data/firestorage/firestorage_event.dart';
+import 'package:instreal/features/posts/data/firestorage/posts_firestorage.dart';
+import 'package:instreal/features/posts/data/firestore/post_firestore_model.dart';
+import 'package:instreal/features/posts/data/firestore/posts_firestore.dart';
 import 'package:instreal/features/posts/posts_repository.dart';
 
 class MockFirestore implements PostsFirestore {
@@ -26,16 +30,27 @@ class MockFirestore implements PostsFirestore {
   }
 }
 
+class MockFireStorage implements PostsFirestorage {
+  @override
+  Stream<FirestorageEvent> upload(File image) {
+    throw UnimplementedError();
+  }
+}
+
 void main() {
   test('convert model to entity', () async {
     final mockStore = MockFirestore();
+    final mockStorage = MockFireStorage();
     final mockModelData = PostFirestoreModel.fromDocument({
       'title': 'title',
       'author': 'author',
       'imageUrl': 'imageUrl',
     }, 'id');
     mockStore.add(mockModelData);
-    final repo = PostsRepositoryImpl(firestore: mockStore);
+    final repo = PostsRepositoryImpl(
+      firestore: mockStore,
+      firestorage: mockStorage,
+    );
     final posts = await repo.posts;
     expect(posts.length, 1);
     expect(posts[0].id, 'id');

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:instreal/features/posts/post_firestore_model.dart';
+import 'package:instreal/features/posts/data/firestore/post_firestore_model.dart';
 
 void main() {
   test('convert json to model', () async {

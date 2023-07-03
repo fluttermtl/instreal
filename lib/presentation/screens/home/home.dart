@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:instreal/features/posts/data/firestorage/posts_firestorage.dart';
 import 'package:instreal/features/posts/post_entity.dart';
-import 'package:instreal/features/posts/posts_firestore.dart';
+import 'package:instreal/features/posts/data/firestore/posts_firestore.dart';
 import 'package:instreal/features/posts/posts_repository.dart';
 import 'package:instreal/l10n/index.dart';
 import 'package:instreal/presentation/components/index.dart';
@@ -14,7 +17,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final postingsRepo = PostsRepositoryImpl(firestore: PostFirestoreImpl());
+  final postingsRepo = PostsRepositoryImpl(
+    firestore: PostFirestoreImpl(),
+    firestorage: PostsFirestorageImpl(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await postingsRepo.add(
-            const Post(
-              id: "",
+            PostDraft(
               title: 'title',
               author: 'author',
-              imageUrl:
-                  'https://i1.wp.com/www.suitcasescholar.com/wp-content/uploads/2012/08/DSC_2583.jpg',
-            ),
+              imageFile: File(
+                'https://i1.wp.com/www.suitcasescholar.com/wp-content/uploads/2012/08/DSC_2583.jpg',
+              ),
+            ).toPost('imageUrl'),
           );
           setState(() {});
         },
